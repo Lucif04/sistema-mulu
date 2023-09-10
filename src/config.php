@@ -107,7 +107,7 @@ include_once "includes/header.php"
                                     <br>
                                     <label>&#8659; Selecciones un nuevo logo &#8659;</label>
                                     <div class = "d-flex justify-content-center">
-                                        <input class="form-control" type="file" id="foto" name="foto">
+                                        <input class="form-control" type="file" id="foto" name="foto" value="<?php echo $data['img']; ?>">
                                     </div>
                                 <?php
                             }

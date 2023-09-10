@@ -81,7 +81,7 @@ include_once "includes/header.php";
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="codigo" class=" text-dark font-weight-bold"><i class="fas fa-barcode"></i> Cod. de barra</label>
+                                <label for="codigo" class=" text-dark font-weight-bold"><i class="fas fa-barcode"></i> Cod. de producto</label>
                                 <input type="text" placeholder="Ingrese código de barras" name="codigo" id="codigo" class="form-control">
                                 <input type="hidden" id="id" name="id">
                             </div>
@@ -100,26 +100,25 @@ include_once "includes/header.php";
                         </div>
                     </div>  
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="preciov" class=" text-dark font-weight-bold">Precio de venta</label>
                                 <input type="text" placeholder="Ingrese precio de venta" class="form-control" name="preciov" id="preciov">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="cantidad" class=" text-dark font-weight-bold">Cantidad</label>
                                 <input type="number" placeholder="Ingrese cantidad" class="form-control" name="cantidad" id="cantidad">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="fecha" class=" text-dark font-weight-bold">Fecha de compra</label>
                                 <input type="date" placeholder="Ingrese fecha de compra" class="form-control" name="fecha" id="fecha">
                             </div>
                         </div>
-                    </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3 d-flex align-items-md-center">
                             <input type="submit" value="Registrar" class="btn btn-primary" id="btnAccion">
                             <input type="button" value="Nuevo" onclick="limpiar()" class="btn btn-success" id="btnNuevo">
                         </div>
