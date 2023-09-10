@@ -28,15 +28,9 @@ if (empty($_SESSION['active'])) {
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="usuarios.php">
-                            <i class="fas fa-user mr-2 fa-2x"></i>
-                            <p> Usuarios</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link d-flex" href="config.php">
-                            <i class="fas fa-cogs mr-2 fa-2x"></i>
-                            <p> Configuración</p>
+                        <a class="nav-link d-flex" href="ventas.php">
+                            <i class="fas fa-cash-register mr-2 fa-2x"></i>
+                            <p> Nueva Venta</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -52,15 +46,21 @@ if (empty($_SESSION['active'])) {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="ventas.php">
-                            <i class="fas fa-cash-register mr-2 fa-2x"></i>
-                            <p> Nueva Venta</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link d-flex" href="lista_ventas.php">
                             <i class="fas fa-cart-plus mr-2 fa-2x"></i>
                             <p> Historial Ventas</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex" href="usuarios.php">
+                            <i class="fas fa-user mr-2 fa-2x"></i>
+                            <p> Usuario</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex" href="config.php">
+                            <i class="fas fa-cogs mr-2 fa-2x"></i>
+                            <p> Configuración</p>
                         </a>
                     </li>
                     <li class="nav-item">
