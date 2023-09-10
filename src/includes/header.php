@@ -77,7 +77,7 @@ if (empty($_SESSION['active'])) {
             <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-dark">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="javascript:;">Sistema de Venta</a>
+                        <a class="navbar-brand" href="#">Sistema de Venta</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -88,7 +88,7 @@ if (empty($_SESSION['active'])) {
                     <div class="collapse navbar-collapse justify-content-end">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link d-flex justify-content-center align-items-center" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link d-flex justify-content-center align-items-center" href="#" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user"></i>
                                     <p class="d-lg-none d-md-block ml-2">
                                         Cuenta
