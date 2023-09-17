@@ -22,12 +22,8 @@ if (empty($_SESSION['active'])) {
 <body>
     <div class="wrapper ">
         <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar2.jpg">
-<<<<<<< HEAD
             <div class="logo">
                 <a href="../index" class="simple-text logo-normal">
-=======
-            <div class="logo"><a href="../src/index.php" class="simple-text logo-normal">
->>>>>>> 22b7f4f4467888c19c7d746f4354ed95d0635a61
                     Mulu
                 </a>
             </div>
