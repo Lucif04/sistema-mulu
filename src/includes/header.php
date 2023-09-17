@@ -22,9 +22,11 @@ if (empty($_SESSION['active'])) {
 <body>
     <div class="wrapper ">
         <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar2.jpg">
-            <div class="logo"><a href="./" class="simple-text logo-normal">
+            <div class="logo">
+                <a href="../index" class="simple-text logo-normal">
                     Mulu
-                </a></div>
+                </a>
+            </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item">
