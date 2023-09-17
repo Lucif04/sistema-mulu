@@ -13,15 +13,19 @@ $datos = mysqli_fetch_assoc($config);
 $clientes = mysqli_query($conexion, "SELECT * FROM cliente WHERE id_cliente = $idcliente");
 $datosC = mysqli_fetch_assoc($clientes);
 $ventas = mysqli_query($conexion, "SELECT d.*, p.codproducto, p.descripcion FROM detalle_venta d INNER JOIN producto p ON d.id_producto = p.codproducto WHERE d.id_venta = $id");
+
+$pdf->SetFont('Arial', 'B', 8);
+$pdf->Cell(15, 5, utf8_decode(""), 0, 0, 'L');
 $pdf->SetFont('Arial', 'B', 16);
-$pdf->Cell(30, 10, utf8_decode($datos['nombre']), 0, 1, 'C');
+$pdf->Cell(15, 5, utf8_decode($datos['nombre']), 0, 1, 'C');
+
 //guardamos la url para sacar su extension
 $url = $datos['img'];
-$url_img = "../" . $url;
-
+$url_img = '../../upload/'. $url;
 $ext_img = explode("." , $url);
+$pdf->image(($url_img),60, 5, 15, 15, $ext_img[1]);
 
-$pdf->image(($url_img),60, 10, 15, 15, $ext_img[1]);
+$pdf->Ln(4);
 
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->Cell(15, 5, utf8_decode("Teléfono: "), 0, 0, 'L');
@@ -31,11 +35,8 @@ $pdf->Cell(15, 5, $datos['telefono'], 0, 1, 'L');
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->Cell(15, 5, "Correo: ", 0, 0, 'L');
 $pdf->SetFont('Arial', '', 8);
-$pdf->Cell(15, 5, utf8_decode($datos['email']), 0, 1, 'L');
-$pdf->SetFont('Arial', 'B', 8);
-$pdf->Cell(15, 5, "Direccion: ", 0, 0, 'L');
-$pdf->SetFont('Arial', '', 8);
-$pdf->Cell(15, 5, utf8_decode($datos['direccion']), 0, 0, 'L');
+$pdf->Cell(15, 5, utf8_decode($datos['email']), 0, 0, 'L');
+
 $pdf->Ln(8);
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->SetFillColor(0, 0, 0);
