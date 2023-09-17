@@ -1,6 +1,6 @@
 <?php
 if (empty($_SESSION['active'])) {
-    header('Location: ../');
+    header('Location: ../src/index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@ if (empty($_SESSION['active'])) {
 <body>
     <div class="wrapper ">
         <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar2.jpg">
-            <div class="logo"><a href="./" class="simple-text logo-normal">
+            <div class="logo"><a href="../src/index.php" class="simple-text logo-normal">
                     Mulu
                 </a></div>
             <div class="sidebar-wrapper">
