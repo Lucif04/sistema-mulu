@@ -21,7 +21,7 @@ if (!empty($_POST)) {
                     </div>';
     } else {
         if (empty($id)) {
-            $query = mysqli_query($conexion, "SELECT * FROM pedidos WHERE idPedido = '$id'");
+            $query = mysqli_query($conexion, "SELECT * FROM pedidos WHERE id_pedido = '$id'");
             $result = mysqli_fetch_array($query);
             if ($result > 0) {
                 $alert = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
