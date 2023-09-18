@@ -46,7 +46,7 @@ if (!empty($_POST)) {
                 }
             }
         }else {
-            $query_update = mysqli_query($conexion, "UPDATE pedidos SET nombre = '$nombre', telefono= '$telefono', pedido = '$pedido', fecha = '$fecha' WHERE idPedido = $id");
+            $query_update = mysqli_query($conexion, "UPDATE pedidos SET nombre = '$nombre', telefono= '$telefono', pedido = '$pedido', fecha = '$fecha' WHERE id_pedido = $id");
             if ($query_update) {
                 $alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">
                         Pedido Modificado
@@ -141,10 +141,10 @@ include_once "includes/header.php";
                                         <td><?php echo $data['pedido']; ?></td>
                                         <td><?php echo $data['fecha']; ?></td>
                                         <td>
-                                            <a href="#" onclick="editarPedido(<?php echo $data['idPedido']; ?>)" class="btn btn-primary"><i class='fas fa-edit'></i></a>
-                                            <a href="pedidos.php" onclick="tildarPedido(<?php echo $data['idPedido']; ?>)" class="btn btn-success"><i class="fas fa-check"></i></a>
-                                            <form action="eliminar_pedido.php?id=<?php echo $data['idPedido']; ?>" method="post" class="confirmar d-inline">
-                                                <button class="btn btn-danger" type="submit"><i class='fas fa-trash-alt'></i> </button>
+                                            <a href="#" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                            <a href="pedidos.php" onclick="tildarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
+                                            <form action="eliminar_pedido.php?id=<?php echo $data['id_pedido']; ?>" method="post" class="confirmar d-inline">
+                                                <button class="btn btn-danger btn-sm" type="submit"><i class='fas fa-trash-alt'></i> </button>
                                             </form>
                                         </td>
                                     </tr>
@@ -157,9 +157,9 @@ include_once "includes/header.php";
                                         <td><?php echo $data['pedido']; ?></td>
                                         <td><?php echo $data['fecha']; ?></td>
                                         <td>
-                                            <a href="#" onclick="editarPedido(<?php echo $data['idPedido']; ?>)" class="btn btn-primary"><i class='fas fa-edit'></i></a>
-                                            <form action="eliminar_pedido.php?id=<?php echo $data['idPedido']; ?>" method="post" class="confirmar d-inline">
-                                                <button class="btn btn-danger" type="submit"><i class='fas fa-trash-alt'></i> </button>
+                                            <a href="#" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class='fas fa-edit'></i></a>
+                                            <form action="eliminar_pedido.php?id=<?php echo $data['id_pedido']; ?>" method="post" class="confirmar d-inline">
+                                                <button class="btn btn-danger btn-sm" type="submit"><i class='fas fa-trash-alt'></i> </button>
                                             </form>
                                         </td>
                                     </tr>
