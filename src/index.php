@@ -85,12 +85,22 @@ include_once "includes/header.php";
         </div>
     </div>
     <div class="col-lg-6">
-	<div class="card">
+	    <div class="card">
             <div class="card-header card-header-primary">
                 <h3 class="title-2 m-b-40">Productos más vendidos</h3>
             </div>
             <div class="card-body">
 			<canvas id="ProductosVendidos"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h3 class="title-2 m-b-40">Ventas por mes</h3>
+            </div>
+            <div class="card-body">
+                <canvas id="VentasPorMes"></canvas>
             </div>
         </div>
     </div>

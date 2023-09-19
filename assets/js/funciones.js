@@ -371,6 +371,77 @@ if (document.getElementById("stockMinimo")) {
         }
     });
 }
+if (document.getElementById("VentasPorMes")) {
+    const action = "ventasPorMes";
+    $.ajax({
+        url: 'chart.php',
+        type: 'POST',
+        async: true,
+        data: {
+            action
+        },
+        success: function (response) {
+            if(response != 0){
+                var data = JSON.parse(response);
+                // Treamos los datos que nos serviran para mostrar las ventas por mes
+                var cantidad = [];
+                for(var i = 0; i < data.length; i++){
+
+                    // Traemos los meses
+                    var mes = data[i]['mes'];
+
+                    // Recorremos la cantidad 12 veces para que se muestre en el grafico, si la venta pertence a ese mes se muestra la cantidad de ventas, si no se muestra 0
+                    for(var j = 0; j < 12; j++){
+                        if(mes == j+1){
+                            cantidad[j] = data[i]['cantidad_ventas'];
+                        }else{
+                            if(cantidad[j] == undefined){
+                                cantidad[j] = 0;
+                            }
+                        }
+                    }
+
+                }
+                var ctx = document.getElementById("VentasPorMes");
+                var myLineChart = new Chart(ctx, {
+                    type:"line",
+                    data: {
+                        // Como labels ponemos todos los meses
+                        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre","Octubre", "Noviembre", "Diciembre"],
+                        datasets: [{
+                            label: "Ventas",
+                            lineTension: 0.3,
+                            backgroundColor: "rgba(78, 115, 223, 0.05)",
+                            borderColor: "#4e73df",
+                            pointRadius: 3,
+                            pointBackgroundColor: "#4e73df",
+                            pointBorderColor: "#4e73df",
+                            pointHoverRadius: 3,
+                            pointHoverBackgroundColor: "#4e73df",
+                            pointHoverBorderColor: "#4e73df",
+                            pointHitRadius: 10,
+                            pointBorderWidth: 2,
+                            // Como data ponemos las cantidades de ventas por mes y si no hay ventas ponemos 0
+                            data: [cantidad[0], cantidad[1], cantidad[2], cantidad[3], cantidad[4], cantidad[5], cantidad[6], cantidad[7], cantidad[8], cantidad[9], cantidad[10], cantidad[11]],
+                        }],
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        },
+                    },
+                });
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }    
+    });
+}
 if (document.getElementById("ProductosVendidos")) {
     const action = "polarChart";
     $.ajax({
@@ -387,7 +458,7 @@ if (document.getElementById("ProductosVendidos")) {
                 var cantidad = [];
                 for (var i = 0; i < data.length; i++) {
                     nombre.push(data[i]['descripcion']);
-                    cantidad.push(data[i]['cantidad']);
+                    cantidad.push(data[i]['total']);
                 }
                 var ctx = document.getElementById("ProductosVendidos");
                 var myPieChart = new Chart(ctx, {
