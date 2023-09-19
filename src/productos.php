@@ -159,7 +159,7 @@ include_once "includes/header.php";
                                 <td><?php echo $data['fecha']; ?></td>
                                 <td><?php echo number_format($precioven - $preciocom, 2) ?></td>
                                 <td>
-                                    <a href="#" onclick="editarProducto(<?php echo $data['codproducto']; ?>)" class="btn btn-primary"><i class='fas fa-edit'></i></a>
+                                    <a href="productos" onclick="editarProducto(<?php echo $data['codproducto']; ?>)" class="btn btn-primary"><i class='fas fa-edit'></i></a>
                                     <form action="eliminar_producto.php?id=<?php echo $data['codproducto']; ?>" method="post" class="confirmar d-inline">
                                         <button class="btn btn-danger" type="submit"><i class='fas fa-trash-alt'></i> </button>
                                     </form>

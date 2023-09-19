@@ -141,8 +141,8 @@ include_once "includes/header.php";
                                         <td><?php echo $data['pedido']; ?></td>
                                         <td><?php echo $data['fecha']; ?></td>
                                         <td>
-                                            <a href="#" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                                            <a href="pedidos.php" onclick="tildarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
+                                            <a href="pedidos" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                            <a href="pedidos" onclick="tildarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
                                             <form action="eliminar_pedido.php?id=<?php echo $data['id_pedido']; ?>" method="post" class="confirmar d-inline">
                                                 <button class="btn btn-danger btn-sm" type="submit"><i class='fas fa-trash-alt'></i> </button>
                                             </form>
@@ -157,7 +157,7 @@ include_once "includes/header.php";
                                         <td><?php echo $data['pedido']; ?></td>
                                         <td><?php echo $data['fecha']; ?></td>
                                         <td>
-                                            <a href="#" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class='fas fa-edit'></i></a>
+                                            <a href="pedidos" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class='fas fa-edit'></i></a>
                                             <form action="eliminar_pedido.php?id=<?php echo $data['id_pedido']; ?>" method="post" class="confirmar d-inline">
                                                 <button class="btn btn-danger btn-sm" type="submit"><i class='fas fa-trash-alt'></i> </button>
                                             </form>

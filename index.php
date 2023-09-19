@@ -56,8 +56,8 @@ if (!empty($_SESSION['active'])) {
     <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
-    <div style="display: flex;justify-content: space-between;">
-        <div class="container" style="display: none;">
+    <div class="d-flex justify-content-between">
+        <div class="container d-none">
             <center><b class="title label mb-2">Login</b></center>
             <form action="" id="login-form" method="POST">
                 <div class="user-details">
