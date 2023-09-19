@@ -545,6 +545,53 @@ function editarProducto(id) {
     });
 }
 
+function editarPedido(id) {
+    const action = "editarPedido";
+    $.ajax({
+        url: 'ajax.php',
+        type: 'GET',
+        async: true,
+        data: {
+            editarPedido: action,
+            id: id
+        },
+        success: function (response) {
+            const datos = JSON.parse(response);
+            $('#nombre').val(datos.nombre);
+            $('#telefono').val(datos.telefono);
+            $('#pedido').val(datos.pedido);
+            $('#fecha').val(datos.fecha);
+            $('#id').val(datos.idPedido);
+            $('#btnAccion').val('Modificar');
+        },
+        error: function (error) {
+            console.log(error);
+
+        }
+    });
+}
+
+function tildarPedido(id) {
+    const action = "tildarPedido";
+    $.ajax({
+        url: 'ajax.php',
+        type: 'GET',
+        async: true,
+        data: {
+            tildarPedido: action,
+            id: id
+        },
+        success: function (response) {
+            const datos = JSON.parse(response);
+            $('#id').val(datos.idPedido);
+        },
+        error: function (error) {
+            console.log(error);
+
+        }
+    });
+}
+
 function limpiar() {
     $('#formulario')[0].reset();
     $('#id').val('');

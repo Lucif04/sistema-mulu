@@ -2,12 +2,7 @@
 session_start();
 require_once "../conexion.php";
 $id_user = $_SESSION['idUser'];
-// $permiso = "configuracion";
-// $sql = mysqli_query($conexion, "SELECT p.*, d.* FROM permisos p INNER JOIN detalle_permisos d ON p.id = d.id_permiso WHERE d.id_usuario = $id_user AND p.nombre = '$permiso'");
-// $existe = mysqli_fetch_all($sql);
-// if (empty($existe) && $id_user != 1) {
-//     header('Location: permisos.php');
-// }
+
 $query = mysqli_query($conexion, "SELECT * FROM configuracion");
 $data = mysqli_fetch_assoc($query);
 if ($_POST) {
@@ -58,7 +53,7 @@ if ($_POST) {
                 $src = "../upload/" . $logo;
                 //movemos la imagen a la carpeta (src)
                 move_uploaded_file($rut_provisoria, $src);
-                $img = $src;
+                $img = $logo;
             }
 
             }
@@ -101,13 +96,13 @@ include_once "includes/header.php"
                                 ?>
                                     <div class = "d-flex justify-content-center">
                                         <div class= "d-flex justify-content-center contenedor-img">
-                                            <img src="<?php echo $data['img']; ?>" alt="logo" class="img-fluid img-thumbnail">
+                                            <img src="../upload/<?php echo $data['img']; ?>" alt="logo" class="img-fluid img-thumbnail">
                                         </div>
                                     </div>
                                     <br>
                                     <label>&#8659; Selecciones un nuevo logo &#8659;</label>
                                     <div class = "d-flex justify-content-center">
-                                        <input class="form-control" type="file" id="foto" name="foto">
+                                        <input class="form-control" type="file" id="foto" name="foto" value="../upload/<?php echo $data['img']; ?>">
                                     </div>
                                 <?php
                             }
@@ -120,7 +115,7 @@ include_once "includes/header.php"
                     </div>
                     <div class="form-group">
                         <label>Teléfono:</label>
-                        <input type="number" name="telefono" class="form-control" value="<?php echo $data['telefono']; ?>" id="txtTelEmpresa" placeholder="teléfono de la Empresa" required>
+                        <input type="text" name="telefono" class="form-control" value="<?php echo $data['telefono']; ?>" id="txtTelEmpresa" placeholder="teléfono de la Empresa" required>
                     </div>
                     <div class="form-group">
                         <label>Correo Electrónico:</label>

@@ -1,6 +1,6 @@
 <?php
 if (empty($_SESSION['active'])) {
-    header('Location: ../');
+    header('Location: ../src/index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -22,21 +22,17 @@ if (empty($_SESSION['active'])) {
 <body>
     <div class="wrapper ">
         <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar2.jpg">
-            <div class="logo"><a href="./" class="simple-text logo-normal">
+            <div class="logo">
+                <a href="../index" class="simple-text logo-normal">
                     Mulu
-                </a></div>
+                </a>
+            </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="usuarios.php">
-                            <i class="fas fa-user mr-2 fa-2x"></i>
-                            <p> Usuarios</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link d-flex" href="config.php">
-                            <i class="fas fa-cogs mr-2 fa-2x"></i>
-                            <p> Configuración</p>
+                        <a class="nav-link d-flex" href="ventas.php">
+                            <i class="fas fa-cash-register mr-2 fa-2x"></i>
+                            <p> Nueva Venta</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -52,15 +48,27 @@ if (empty($_SESSION['active'])) {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="ventas.php">
-                            <i class="fas fa-cash-register mr-2 fa-2x"></i>
-                            <p> Nueva Venta</p>
+                        <a class="nav-link d-flex" href="pedidos.php">
+                            <i class="fas fa-solid fa-list mr-2 fa-2x"></i>
+                            <p>Pedidos</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex" href="lista_ventas.php">
                             <i class="fas fa-cart-plus mr-2 fa-2x"></i>
                             <p> Historial Ventas</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex" href="usuarios.php">
+                            <i class="fas fa-user mr-2 fa-2x"></i>
+                            <p> Usuario</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex" href="config.php">
+                            <i class="fas fa-cogs mr-2 fa-2x"></i>
+                            <p> Configuración</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -77,7 +85,7 @@ if (empty($_SESSION['active'])) {
             <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-dark">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="javascript:;">Sistema de Venta</a>
+                        <a class="navbar-brand" href="#">Sistema de Venta</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -88,7 +96,7 @@ if (empty($_SESSION['active'])) {
                     <div class="collapse navbar-collapse justify-content-end">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link d-flex justify-content-center align-items-center" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link d-flex justify-content-center align-items-center" href="#" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user"></i>
                                     <p class="d-lg-none d-md-block ml-2">
                                         Cuenta

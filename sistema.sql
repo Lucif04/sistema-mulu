@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-09-2023 a las 00:14:45
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Tiempo de generación: 10-08-2021 a las 16:45:40
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,25 +28,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cliente` (
-  `id_cliente` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `telefono` varchar(15) NOT NULL,
-  `correo` varchar(100) DEFAULT NULL,
-  `provincia` varchar(100) NOT NULL,
-  `localidad` varchar(100) NOT NULL,
-  `direccion` varchar(200) NOT NULL,
-  `cp` int(11) NOT NULL
+  `idcliente` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` varchar(200) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`id_cliente`, `nombre`, `telefono`, `correo`, `provincia`, `localidad`, `direccion`, `cp`) VALUES
-(1, 'Ana Lopez', '978645132', 'ana@gmail.com', 'Buenos Aires', 'Junin', 'Trujillo - Perú', 0),
-(2, 'Maria sanchez', '974561234', 'ana@gmail.com', 'Buenos Aires', 'Junin', 'Trujillo - Perú', 0),
-(4, 'Nuevo Cliente', '97877789', 'ana@gmail.com', 'Buenos Aires', 'Junin', 'Av. san martin n° 342', 0),
-(6, 'Registro de Cliente', '978978', 'ana@gmail.com', 'Buenos Aires', 'Junin', 'Av. Libertad', 0);
+INSERT INTO `cliente` (`idcliente`, `nombre`, `telefono`, `direccion`) VALUES
+(1, 'Ana Lopez', '978645132', 'Trujillo - Perú'),
+(2, 'Maria sanchez', '974561234', 'Trujillo - Perú'),
+(4, 'Nuevo Cliente', '97877789', 'Av. san martin n° 342'),
+(6, 'Registro de Cliente', '978978', 'Av. Libertad');
 
 -- --------------------------------------------------------
 
@@ -56,19 +52,18 @@ INSERT INTO `cliente` (`id_cliente`, `nombre`, `telefono`, `correo`, `provincia`
 
 CREATE TABLE `configuracion` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `telefono` varchar(15) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `direccion` text NOT NULL,
-  `img` varchar(150) DEFAULT NULL
+  `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `configuracion`
 --
 
-INSERT INTO `configuracion` (`id`, `nombre`, `telefono`, `email`, `direccion`, `img`) VALUES
-(1, 'Mulu', '2364652498', 'mushu.skin@gmail.com', 'Borges 451', '../upload/logoemp.jpeg');
+INSERT INTO `configuracion` (`id`, `nombre`, `telefono`, `email`, `direccion`) VALUES
+(1, 'Sistemas Free', '98745698', 'ana.info1999@gamil.com', 'Trujillo');
 
 -- --------------------------------------------------------
 
@@ -80,7 +75,7 @@ CREATE TABLE `detalle_permisos` (
   `id` int(11) NOT NULL,
   `id_permiso` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `detalle_permisos`
@@ -129,44 +124,54 @@ CREATE TABLE `detalle_venta` (
 --
 
 INSERT INTO `detalle_venta` (`id`, `id_producto`, `id_venta`, `cantidad`, `descuento`, `precio`, `total`) VALUES
-(1, 1, 1, 10, 200.00, 1500.00, 14800.00),
-(2, 2, 1, 2, 100.00, 800.00, 1500.00),
-(3, 2, 2, 15, 0.00, 800.00, 12000.00),
-(4, 1, 3, 5, 50.00, 1500.00, 7450.00),
-(5, 2, 3, 1, 10.00, 800.00, 790.00),
-(6, 3, 3, 2, 100.00, 500.00, 900.00),
-(7, 3, 4, 9, 300.00, 500.00, 17700.00),
-(8, 4, 4, 2, 150.00, 3000.00, 5850.00),
-(9, 5, 5, 8, 100.00, 350.00, 2700.00),
-(10, 4, 5, 1, 200.00, 3000.00, 2800.00),
-(11, 1, 6, 1, 50.00, 1500.00, 1450.00),
-(12, 4, 6, 3, 520.00, 3000.00, 8480.00),
-(13, 3, 6, 1, 0.00, 500.00, 500.00),
-(14, 4, 7, 3, 10.00, 3000.00, 8990.00),
-(15, 1, 8, 2, 0.00, 1500.00, 3000.00);
+(1, 1, 1, 10, '200.00', '1500.00', '14800.00'),
+(2, 2, 1, 2, '100.00', '800.00', '1500.00'),
+(3, 2, 2, 15, '0.00', '800.00', '12000.00'),
+(4, 1, 3, 5, '50.00', '1500.00', '7450.00'),
+(5, 2, 3, 1, '10.00', '800.00', '790.00'),
+(6, 3, 3, 2, '100.00', '500.00', '900.00'),
+(7, 3, 4, 9, '300.00', '500.00', '17700.00'),
+(8, 4, 4, 2, '150.00', '3000.00', '5850.00'),
+(9, 5, 5, 8, '100.00', '350.00', '2700.00'),
+(10, 4, 5, 1, '200.00', '3000.00', '2800.00'),
+(11, 1, 6, 1, '50.00', '1500.00', '1450.00'),
+(12, 4, 6, 3, '520.00', '3000.00', '8480.00'),
+(13, 3, 6, 1, '0.00', '500.00', '500.00'),
+(14, 4, 7, 3, '10.00', '3000.00', '8990.00');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permisos`
+-- Estructura de tabla para la tabla `pedidos`
 --
 
 CREATE TABLE `permisos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `permisos`
+-- Volcado de datos para la tabla `pedidos`
 --
 
-INSERT INTO `permisos` (`id`, `nombre`) VALUES
-(1, 'configuración'),
-(2, 'usuarios'),
-(3, 'clientes'),
-(4, 'productos'),
-(5, 'ventas'),
-(6, 'nueva_venta');
+INSERT INTO `pedidos` (`id_pedido`, `nombre`, `telefono`, `pedido`, `fecha`, `vendido`) VALUES
+(1, 'Mica Silvani', '2147483647', '1 pack mixto - Ricardo Rojas 785', '2023-09-18', 0),
+(2, 'Vicky Bellome', '2147483647', '1 pack mixto - pringles 1619', '2023-09-18', 0),
+(3, 'Mai Bellome', '2364418787', '1 pack comun - pringles 1618', '2023-09-18', 0),
+(4, 'Agustin Riglos', '2355525520', '1 pack mixto - ROM', '2023-09-18', 0),
+(5, 'Valen Barone', '2364338668', '1 pack integral - Hipolito Irigoyen 471', '2023-09-18', 0),
+(6, 'Cande Sioli', '2364570185', '1 pack integral - Hipolito Irigoyen 651 t7', '2023-09-18', 0),
+(7, 'Agos Pedemonti', '2364412165', '1 pack comun - Ameguino 404', '2023-09-18', 0),
+(8, 'Kalo Banegas', '2364581257', '1 pack mixto - Lavalle 1207', '2023-09-18', 0),
+(9, 'Laura Martinez', '2355510784', '1 pack integral', '2023-09-18', 0),
+(10, 'Sabri Buffarini', '2364573658', '1 pack integral - Roque sanz peña 866(Pago)', '2023-09-18', 1),
+(11, 'Debora Meraglia', '2364275550', '1 pack integral - vuelta de obligado al frente de lo de la tia juana', '2023-09-18', 0),
+(12, 'Cele Cuadro ', ' 2364310394', '1 pack integral - Sarmiento 923 (pago)', '2023-09-18', 1),
+(13, 'Pablo romero', '2364584792', '1 pack comun - sarmiento 833', '2023-09-18', 0),
+(14, 'Agus Gorocito', '2364665529', '1 pack integral - Tucuman 428 o libanesa 128', '2023-09-18', 0),
+(15, 'Milagros Barzabal', '2364590925', '1 pack comun + 1 integral - marrul y niñas de ayohuma casa 19', '2023-09-18', 0),
+(16, 'Ova Plaza', '2364377725', '1 pack mixto - el barrio', '2023-09-18', 0),
+(17, 'Juani Garayalde', '2364224433', '2 pack integral - Lavalle 461', '2023-09-18', 0);
 
 -- --------------------------------------------------------
 
@@ -188,13 +193,13 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`codproducto`, `codigo`, `descripcion`, `precioCompra`, `precioVenta`, `stock`, `fecha`) VALUES
-(1, '123456', 'Televisor Lg', 1400.00, 1500.00, 32, '2023-08-04'),
-(2, '13256445', 'Celular Lg', 700.00, 800.00, 2, '2023-08-23'),
-(3, '97879846', 'Impresora epson L300', 250.00, 600.00, 4, '2023-09-06'),
-(4, '978798', 'Computadora Lenovo', 1500.00, 3000.00, 41, '2023-06-24'),
-(5, '7977989', 'Scanner', 100.00, 450.00, 6, '0000-00-00'),
-(7, '001', 'Medias Addidas', 1000.00, 1500.00, 10, '2023-03-25');
+INSERT INTO `producto` (`codproducto`, `codigo`, `descripcion`, `precio`, `existencia`) VALUES
+(1, '123456', 'Televisor Lg', '1500.00', 34),
+(2, '13256445', 'Celular Lg', '800.00', 2),
+(3, '97879846', 'Impresora epson L300', '500.00', 3),
+(4, '978798', 'Computadora Lenovo', '3000.00', 41),
+(5, '7977989', 'Scanner', '350.00', 4),
+(6, '78879978', 'Arroz Trujillo', '15.00', 60);
 
 -- --------------------------------------------------------
 
@@ -215,8 +220,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `correo`, `usuario`, `clave`) VALUES
-(1, 'Sistemas Free', 'ana.info1999@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3'),
-(9, 'Maria Sanchez', 'maria@gmail.com', 'maria', '263bce650e68ab4e23f28263760b9fa5');
+(1, 'Mulu', 'mulu.sistema@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 -- --------------------------------------------------------
 
@@ -237,14 +241,13 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id`, `id_cliente`, `total`, `id_usuario`, `fecha`) VALUES
-(1, 1, 16300.00, 1, '2021-08-09 21:01:45'),
-(2, 1, 12000.00, 1, '2021-08-09 21:05:02'),
-(3, 1, 9140.00, 1, '2021-08-09 21:10:23'),
-(4, 1, 23550.00, 1, '2021-08-10 01:09:24'),
-(5, 2, 5500.00, 1, '2021-08-10 01:25:27'),
-(6, 1, 10430.00, 1, '2021-08-10 21:27:09'),
-(7, 1, 8990.00, 9, '2021-08-10 21:31:50'),
-(8, 1, 3000.00, 1, '2023-09-06 17:50:56');
+(1, 1, '16300.00', 1, '2021-08-09 21:01:45'),
+(2, 1, '12000.00', 1, '2021-08-09 21:05:02'),
+(3, 1, '9140.00', 1, '2021-08-09 21:10:23'),
+(4, 1, '23550.00', 1, '2021-08-10 01:09:24'),
+(5, 2, '5500.00', 1, '2021-08-10 01:25:27'),
+(6, 1, '10430.00', 1, '2021-08-10 21:27:09'),
+(7, 1, '8990.00', 9, '2021-08-10 21:31:50');
 
 --
 -- Índices para tablas volcadas
@@ -263,14 +266,6 @@ ALTER TABLE `configuracion`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `detalle_permisos`
---
-ALTER TABLE `detalle_permisos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_permiso` (`id_permiso`),
-  ADD KEY `id_usuario` (`id_usuario`);
-
---
 -- Indices de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
@@ -287,10 +282,10 @@ ALTER TABLE `detalle_venta`
   ADD KEY `id_venta` (`id_venta`);
 
 --
--- Indices de la tabla `permisos`
+-- Indices de la tabla `pedidos`
 --
-ALTER TABLE `permisos`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id_pedido`);
 
 --
 -- Indices de la tabla `producto`
@@ -320,7 +315,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracion`
@@ -332,31 +327,31 @@ ALTER TABLE `configuracion`
 -- AUTO_INCREMENT de la tabla `detalle_permisos`
 --
 ALTER TABLE `detalle_permisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT de la tabla `permisos`
+-- AUTO_INCREMENT de la tabla `pedidos`
 --
-ALTER TABLE `permisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `pedidos`
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -368,18 +363,11 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `detalle_permisos`
---
-ALTER TABLE `detalle_permisos`
-  ADD CONSTRAINT `detalle_permisos_ibfk_1` FOREIGN KEY (`id_permiso`) REFERENCES `permisos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `detalle_permisos_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`idusuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `detalle_temp`

@@ -124,6 +124,19 @@ if (isset($_GET['q'])) {
     $data = mysqli_fetch_array($sql);
     echo json_encode($data);
     exit;
+}else if (isset($_GET['editarPedido'])) {
+    $id = $_GET['id'];
+    $sql = mysqli_query($conexion, "SELECT * FROM pedidos WHERE id_pedido = $id");
+    $data = mysqli_fetch_array($sql);
+    echo json_encode($data);
+    exit;
+}else if (isset($_GET['tildarPedido'])) {
+    $id = $_GET['id'];
+    $sql = mysqli_query($conexion, "UPDATE pedidos SET vendido = 1 WHERE id_pedido = $id");
+    $data = mysqli_fetch_array($sql);
+    echo json_encode($data);
+    exit;
+    
 }
 if (isset($_POST['regDetalle'])) {
     $id = $_POST['id'];

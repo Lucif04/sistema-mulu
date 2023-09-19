@@ -5,9 +5,9 @@
         <div class="copyright float-right">
             &copy;
             <script>
-                document.write(new Date().getFullYear())
+                document.write(new Date().getFullYear());
             </script>
-            <a href="#" target="_blank">Sistemas Gratis</a>.
+            <a href="#" target="_blank">Sistemas Mulu.</a>
         </div>
     </div>
 </footer>
