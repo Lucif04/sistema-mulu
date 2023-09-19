@@ -20,43 +20,48 @@ if ($_POST) {
         $email = $_POST['email'];
         $direccion = $_POST['direccion'];
         $id = $_POST['id'];
+        $imagen_actual = $_POST['imagen_actual'];
         $img = '';
         //Obtenemos el archivo
         $file = $_FILES["foto"];
-        if(isset($file)){
-            //Obtenemos le extencion del archivo .jpg / .png etc
-            $tipo = $file["type"];
-            //extencion de la imagen
-            $ext_img = explode("/" , $tipo);
-            //Obtenemos el nombre del archivo
-            $logo = "logoemp." . $ext_img[1];
-            //el archivo se guarda provisoriamente en esta carpeta siempre
-            $rut_provisoria = $file["tmp_name"];
-            //tamaño de la foto
-            $size = $file["size"];
-            //carpeta donde guardo la foto
-            if ($tipo != 'image/jpg' && $tipo != 'image/JPG' && $tipo != 'image/jpeg' && $tipo != 'image/jpg' && $tipo != 'image/png'){
-                $alert = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        Error, el arhivo no es una imagen.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>';
-            }else if($size > 3*1024*1024){
-                $alert = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        Erro, el tamaño maximo permitido es de 3MB.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>';
-            } else {
-                $src = "../upload/" . $logo;
-                //movemos la imagen a la carpeta (src)
-                move_uploaded_file($rut_provisoria, $src);
-                $img = $logo;
-            }
+        if (isset($file) && !empty($file["name"])) {
+            if(isset($file)){
+                //Obtenemos le extencion del archivo .jpg / .png etc
+                $tipo = $file["type"];
+                //extencion de la imagen
+                $ext_img = explode("/" , $tipo);
+                //Obtenemos el nombre del archivo
+                $logo = "logoemp." . $ext_img[1];
+                //el archivo se guarda provisoriamente en esta carpeta siempre
+                $rut_provisoria = $file["tmp_name"];
+                //tamaño de la foto
+                $size = $file["size"];
+                //carpeta donde guardo la foto
+                if ($tipo != 'image/jpg' && $tipo != 'image/JPG' && $tipo != 'image/jpeg' && $tipo != 'image/jpg' && $tipo != 'image/png'){
+                    $alert = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            Error, el arhivo no es una imagen.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>';
+                }else if($size > 3*1024*1024){
+                    $alert = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            Erro, el tamaño maximo permitido es de 3MB.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>';
+                } else {
+                    $src = "../upload/" . $logo;
+                    //movemos la imagen a la carpeta (src)
+                    move_uploaded_file($rut_provisoria, $src);
+                    $img = $logo;
+                }
+            }    
 
-            }
+        }else {
+            $img = $imagen_actual;
+        }
         
         $update = mysqli_query($conexion, "UPDATE configuracion SET nombre = '$nombre', telefono = '$telefono', email = '$email', direccion = '$direccion', img ='$img' WHERE id = $id");
         if ($update) {
@@ -102,6 +107,7 @@ include_once "includes/header.php"
                                     <br>
                                     <label>&#8659; Selecciones un nuevo logo &#8659;</label>
                                     <div class = "d-flex justify-content-center">
+                                        <input type="hidden" name="imagen_actual" id="imagen_actual" value="<?php echo $data['img']; ?>">
                                         <input class="form-control" type="file" id="foto" name="foto" value="../upload/<?php echo $data['img']; ?>">
                                     </div>
                                 <?php
