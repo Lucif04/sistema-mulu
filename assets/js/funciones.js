@@ -387,7 +387,7 @@ if (document.getElementById("ProductosVendidos")) {
                 var cantidad = [];
                 for (var i = 0; i < data.length; i++) {
                     nombre.push(data[i]['descripcion']);
-                    cantidad.push(data[i]['cantidad']);
+                    cantidad.push(data[i]['total']);
                 }
                 var ctx = document.getElementById("ProductosVendidos");
                 var myPieChart = new Chart(ctx, {

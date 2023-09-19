@@ -103,9 +103,9 @@ $pdf->Cell(65, 5, 'Descuento Total', 0, 1, 'R');
 $pdf->SetFont('Arial', '', 10);
 $pdf->Cell(65, 5, number_format($desc, 2, '.', ','), 0, 1, 'R');*/
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(65, 5, 'Total a pagar', 0, 1, 'R');
+$pdf->Cell(70, 5, 'Total a pagar', 0, 1, 'R');
 $pdf->SetFont('Arial', '', 10);
-$pdf->Cell(65, 5, '$ '.number_format($total, 0, '', '.'), 0, 1, 'R');
+$pdf->Cell(70, 5, '$ '.number_format($total, 0, '', '.'), 0, 1, 'R');
 
 
 

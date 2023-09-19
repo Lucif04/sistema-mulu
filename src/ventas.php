@@ -126,7 +126,7 @@ include_once "includes/header.php";
         </div>
     </div>
     <div class="col-md-6">
-        <a href="#" class="btn btn-primary" id="btn_generar"><i class="fas fa-save"></i> Generar Venta</a>
+        <a href="ventas" class="btn btn-primary" id="btn_generar"><i class="fas fa-save"></i> Generar Venta</a>
     </div>
 
 </div>
