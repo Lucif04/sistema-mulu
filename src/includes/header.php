@@ -1,6 +1,6 @@
 <?php
 if (empty($_SESSION['active'])) {
-    header('Location: ../index');
+    header('Location: ../index.php');
 }
 ?>
 <!DOCTYPE html>
