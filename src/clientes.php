@@ -154,7 +154,7 @@ include_once "includes/header.php";
                             $result = mysqli_num_rows($query);
                             if ($result > 0) {
                                 while ($data = mysqli_fetch_assoc($query)) { ?>
-                                    <tr>
+                                    <tr class="text-center">
                                         <td><?php echo $data['id_cliente']; ?></td>
                                         <td><?php echo $data['nombre']; ?></td>
                                         <td><?php echo $data['telefono']; ?></td>
@@ -164,9 +164,9 @@ include_once "includes/header.php";
                                         <td><?php echo $data['direccion']; ?> </td>
                                         <td><?php echo $data['cp']; ?> </td>
                                         <td>
-                                            <a href="#" onclick="editarCliente(<?php echo $data['id_cliente']; ?>)" class="btn btn-primary"><i class='fas fa-edit'></i></a>
+                                            <a href="#" onclick="editarCliente(<?php echo $data['id_cliente']; ?>)" class="btn btn-primary btn-sm"><i class='fas fa-edit'></i></a>
                                             <form action="eliminar_cliente.php?id=<?php echo $data['id_cliente']; ?>" method="post" class="confirmar d-inline">
-                                                <button class="btn btn-danger" type="submit"><i class='fas fa-trash-alt'></i> </button>
+                                                <button class="btn btn-danger btn-sm" type="submit"><i class='fas fa-trash-alt'></i> </button>
                                             </form>
                                         </td>
                                     </tr>

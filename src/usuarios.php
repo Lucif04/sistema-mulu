@@ -2,6 +2,7 @@
 session_start();
 $permiso = 'usuarios';
 $id_user = $_SESSION['idUser'];
+
 include "../conexion.php";
 
 if (!empty($_POST)) {
@@ -100,7 +101,7 @@ include "includes/header.php";
                         <td><?php echo $data['correo']; ?></td>
                         <td><?php echo $data['usuario']; ?></td>
                         <td>
-                            <a href="#" onclick="editarUsuario(<?php echo $data['idusuario']; ?>)" class="btn btn-success d-block"><i class='fas fa-edit'></i></a>
+                            <a href="ususarios" onclick="editarUsuario(<?php echo $data['idusuario']; ?>)" class="btn btn-success d-block"><i class='fas fa-edit'></i></a>
                             
                             </form>
                         </td>

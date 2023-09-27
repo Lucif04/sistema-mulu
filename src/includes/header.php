@@ -1,6 +1,6 @@
 <?php
 if (empty($_SESSION['active'])) {
-    header('Location: ../src/index.php');
+    header('Location: ../index');
 }
 ?>
 <!DOCTYPE html>
@@ -30,49 +30,49 @@ if (empty($_SESSION['active'])) {
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="ventas.php">
+                        <a class="nav-link d-flex" href="ventas">
                             <i class="fas fa-cash-register mr-2 fa-2x"></i>
                             <p> Nueva Venta</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="productos.php">
+                        <a class="nav-link d-flex" href="productos">
                             <i class="fab fa-product-hunt mr-2 fa-2x"></i>
                             <p> Productos</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="clientes.php">
+                        <a class="nav-link d-flex" href="clientes">
                             <i class=" fas fa-users mr-2 fa-2x"></i>
                             <p> Clientes</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="pedidos.php">
+                        <a class="nav-link d-flex" href="pedidos">
                             <i class="fas fa-solid fa-list mr-2 fa-2x"></i>
                             <p>Pedidos</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="lista_ventas.php">
+                        <a class="nav-link d-flex" href="lista_ventas">
                             <i class="fas fa-cart-plus mr-2 fa-2x"></i>
                             <p> Historial Ventas</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="usuarios.php">
+                        <a class="nav-link d-flex" href="usuarios">
                             <i class="fas fa-user mr-2 fa-2x"></i>
                             <p> Usuario</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="config.php">
+                        <a class="nav-link d-flex" href="config">
                             <i class="fas fa-cogs mr-2 fa-2x"></i>
                             <p> Configuración</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex" href="salir.php">
+                        <a class="nav-link d-flex" href="salir">
                             <i class="fas fa-sign-out-alt mr-2 fa-2x"></i>
                             <p> Cerrar Sesión</p>
                         </a>
@@ -85,7 +85,7 @@ if (empty($_SESSION['active'])) {
             <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-dark">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#">Sistema de Venta</a>
+                        <a class="navbar-brand" href="index">Sistema de Venta</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>

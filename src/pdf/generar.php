@@ -51,12 +51,12 @@ if($datosC['id_cliente'] == 1){
     
 }else{
     $pdf->SetTextColor(0, 0, 0);
-    $pdf->Cell(25, 5, utf8_decode('Nombre'), 0, 0, 'L');
-    $pdf->Cell(25, 5, utf8_decode('Teléfono'), 0, 1, 'L');
+    $pdf->Cell(30, 5, utf8_decode('Nombre'), 0, 0, 'L');
+    $pdf->Cell(30, 5, utf8_decode('Teléfono'), 0, 1, 'L');
     //$pdf->Cell(30, 5, utf8_decode('Correo'), 0, 1, 'L');
     $pdf->SetFont('Arial', '', 7);
-    $pdf->Cell(25, 5, utf8_decode($datosC['nombre']), 0, 0, 'L');
-    $pdf->Cell(25, 5, utf8_decode($datosC['telefono']), 0, 1, 'L');
+    $pdf->Cell(30, 5, utf8_decode($datosC['nombre']), 0, 0, 'L');
+    $pdf->Cell(30, 5, utf8_decode($datosC['telefono']), 0, 1, 'L');
     //$pdf->Cell(30, 5, utf8_decode($datosC['correo']), 0, 1, 'L');
 
     $pdf->Ln(2);
@@ -103,9 +103,9 @@ $pdf->Cell(65, 5, 'Descuento Total', 0, 1, 'R');
 $pdf->SetFont('Arial', '', 10);
 $pdf->Cell(65, 5, number_format($desc, 2, '.', ','), 0, 1, 'R');*/
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(65, 5, 'Total a pagar', 0, 1, 'R');
+$pdf->Cell(70, 5, 'Total a pagar', 0, 1, 'R');
 $pdf->SetFont('Arial', '', 10);
-$pdf->Cell(65, 5, '$ '.number_format($total, 0, '', '.'), 0, 1, 'R');
+$pdf->Cell(70, 5, '$ '.number_format($total, 0, '', '.'), 0, 1, 'R');
 
 
 

@@ -3,6 +3,7 @@ session_start();
 require_once "../conexion.php";
 $id_user = $_SESSION['idUser'];
 
+
 $query = mysqli_query($conexion, "SELECT v.*, c.id_cliente, c.nombre FROM ventas v INNER JOIN cliente c ON v.id_cliente = c.id_cliente");
 include_once "includes/header.php";
 ?>
@@ -12,7 +13,9 @@ include_once "includes/header.php";
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-light" id="tbl">
+            <div id="filtroMes">
+            </div>
+            <table class="table table-light" id="tblHistorialVentas">
                 <thead class="thead-dark">
                     <tr>
                         <th>#</th>
