@@ -1,7 +1,9 @@
 <?php
+
 session_start();
 include "../conexion.php";
 $id_user = $_SESSION['idUser'];
+
 
 if (!empty($_POST)) {
     $alert = "";
@@ -20,18 +22,29 @@ if (!empty($_POST)) {
                         </button>
                     </div>';
     } else {
-        if (empty($id)) {
+        if (!empty($id)) {
             $query = mysqli_query($conexion, "SELECT * FROM pedidos WHERE id_pedido = '$id'");
             $result = mysqli_fetch_array($query);
             if ($result > 0) {
-                $alert = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            El codigo ya existe
+                $query_update = mysqli_query($conexion, "UPDATE pedidos SET nombre = '$nombre', telefono= '$telefono', pedido = '$pedido', fecha = '$fecha' WHERE id_pedido = $id");
+                if ($query_update) {
+                    $alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Pedido Modificado
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>';
+        
+                } else {
+                    $alert = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            Error al modificar
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>';
+                }
             } else {
-                $query_insert = mysqli_query($conexion, "INSERT INTO pedidos(nombre,telefono,pedido,fecha) values ('$nombre', '$telefono', '$pedido', '$fecha')");
+                $query_insert = mysqli_query($conexion, "INSERT INTO pedidos(id_pedido, nombre,telefono,pedido,fecha) values ($id,'$nombre', '$telefono', '$pedido', '$fecha')");
                 if ($query_insert) {
                     $alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">
                                 Pedido registrado
@@ -44,24 +57,6 @@ if (!empty($_POST)) {
                     Error al registrar el pedido
                   </div>';
                 }
-            }
-        }else {
-            $query_update = mysqli_query($conexion, "UPDATE pedidos SET nombre = '$nombre', telefono= '$telefono', pedido = '$pedido', fecha = '$fecha' WHERE id_pedido = $id");
-            if ($query_update) {
-                $alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                        Pedido Modificado
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>';
-    
-            } else {
-                $alert = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        Error al modificar
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>';
             }
         }
     }
@@ -79,7 +74,7 @@ include_once "includes/header.php";
                             <div class="form-group">
                                 <label for="nombre" class=" text-dark font-weight-bold">Nombre</label>
                                 <input type="text" placeholder="Ingrese nombre del producto" name="nombre" id="nombre" class="form-control">
-                                <input type="hidden" id="id" name="id">
+                                <input type="hiden" name="id" id="id" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -144,8 +139,8 @@ include_once "includes/header.php";
                                         <td><?php echo $data['pedido']; ?></td>
                                         <td><?php echo $nueva_fecha; ?></td>
                                         <td>
-                                            <a href="#" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                                            <a href="pedidos.php" onclick="tildarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
+                                            <a href="pedidos" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                            <a href="pedidos" onclick="tildarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
                                             <form action="eliminar_pedido.php?id=<?php echo $data['id_pedido']; ?>" method="post" class="confirmar d-inline">
                                                 <button class="btn btn-danger btn-sm" type="submit"><i class='fas fa-trash-alt'></i> </button>
                                             </form>
@@ -160,7 +155,7 @@ include_once "includes/header.php";
                                         <td><?php echo $data['pedido']; ?></td>
                                         <td><?php echo $nueva_fecha; ?></td>
                                         <td>
-                                            <a href="#" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class='fas fa-edit'></i></a>
+                                            <a href="pedidos" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class='fas fa-edit'></i></a>
                                             <form action="eliminar_pedido.php?id=<?php echo $data['id_pedido']; ?>" method="post" class="confirmar d-inline">
                                                 <button class="btn btn-danger btn-sm" type="submit"><i class='fas fa-trash-alt'></i> </button>
                                             </form>

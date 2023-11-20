@@ -18,5 +18,14 @@ if ($_POST['action'] == 'polarChart') {
     echo json_encode($arreglo);
     die();
 }
-//
+if ($_POST['action'] == 'ventasPorMes') {
+    $arreglo = array();
+    // Contamos las ventas de este año agrupadas por mes, si un mes no tiene ventas, le ponemos 0
+    $query = mysqli_query($conexion, "SELECT MONTH(fecha) as mes, COUNT(*) as cantidad_ventas FROM ventas WHERE YEAR(fecha) = YEAR(CURDATE()) GROUP BY MONTH(fecha)");
+    while ($data = mysqli_fetch_array($query)) {
+        $arreglo[] = $data;
+    }
+    echo json_encode($arreglo);
+    die();
+}
 ?>
