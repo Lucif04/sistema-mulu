@@ -23,12 +23,17 @@ include_once "includes/header.php";
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($row = mysqli_fetch_assoc($query)) { ?>
+                    <?php while ($row = mysqli_fetch_assoc($query)) { 
+                        //Cambiamos el formato de la fecha para mostrarlo de una mejor manera
+                        $fecha = $row['fecha'];
+                        $fecha_timestamp = strtotime($fecha);
+                        $nueva_fecha = date("d-m-Y H:i:s", $fecha_timestamp);
+                        ?>
                         <tr>
                             <td><?php echo $row['id']; ?></td>
                             <td><?php echo $row['nombre']; ?></td>
                             <td><?php echo $row['total']; ?></td>
-                            <td><?php echo $row['fecha']; ?></td>
+                            <td><?php echo $nueva_fecha; ?></td>
                             <td>
                                 <a href="pdf/generar.php?cl=<?php echo $row['id_cliente'] ?>&v=<?php echo $row['id'] ?>" target="_blank" class="btn btn-danger"><i class="fas fa-file-pdf"></i></a>
                             </td>

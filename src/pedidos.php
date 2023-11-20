@@ -133,13 +133,16 @@ include_once "includes/header.php";
                         if ($result > 0) {
                             while ($data = mysqli_fetch_assoc($query)) {
                                 $vendido = $data['vendido'];
+                                $fecha = $data['fecha'];
+                                $fecha_timestamp = strtotime($fecha);
+                                $nueva_fecha = date("d-m-Y", $fecha_timestamp);
                                 if( $vendido == 0 ){ 
                                 ?>
                                     <tr class="text-center">
                                         <td><?php echo $data['nombre']; ?></td>
                                         <td><?php echo $data['telefono']; ?></td>
                                         <td><?php echo $data['pedido']; ?></td>
-                                        <td><?php echo $data['fecha']; ?></td>
+                                        <td><?php echo $nueva_fecha; ?></td>
                                         <td>
                                             <a href="#" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                                             <a href="pedidos.php" onclick="tildarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
@@ -155,7 +158,7 @@ include_once "includes/header.php";
                                         <td><?php echo $data['nombre']; ?></td>
                                         <td><?php echo $data['telefono']; ?></td>
                                         <td><?php echo $data['pedido']; ?></td>
-                                        <td><?php echo $data['fecha']; ?></td>
+                                        <td><?php echo $nueva_fecha; ?></td>
                                         <td>
                                             <a href="#" onclick="editarPedido(<?php echo $data['id_pedido']; ?>)" class="btn btn-primary btn-sm"><i class='fas fa-edit'></i></a>
                                             <form action="eliminar_pedido.php?id=<?php echo $data['id_pedido']; ?>" method="post" class="confirmar d-inline">

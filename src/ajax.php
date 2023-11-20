@@ -1,6 +1,7 @@
 <?php
 require_once "../conexion.php";
 session_start();
+
 if (isset($_GET['q'])) {
     $datos = array();
     $nombre = $_GET['q'];
@@ -24,7 +25,7 @@ if (isset($_GET['q'])) {
     $nombre = $_GET['pro'];
     $producto = mysqli_query($conexion, "SELECT * FROM producto WHERE codigo LIKE '%" . $nombre . "%' OR descripcion LIKE '%" . $nombre . "%'");
     while ($row = mysqli_fetch_assoc($producto)) {
-        $data['id'] = $row['codproducto'];
+        $data['id'] = $row['codProducto'];
         $data['label'] = $row['codigo'] . ' - ' .$row['descripcion'];
         $data['value'] = $row['descripcion'];
         $data['precio'] = $row['precioVenta'];

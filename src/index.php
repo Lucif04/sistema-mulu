@@ -19,7 +19,7 @@ include_once "includes/header.php";
                 <div class="card-icon">
                     <i class="fas fa-user fa-2x"></i>
                 </div>
-                <a href="usuarios.php" class="card-category text-warning font-weight-bold">
+                <a href="usuarios" class="card-category text-warning font-weight-bold">
                     Usuarios
                 </a>
                 <h3 class="card-title"><?php echo $total['usuarios']; ?></h3>
@@ -35,7 +35,7 @@ include_once "includes/header.php";
                 <div class="card-icon">
                     <i class="fas fa-users fa-2x"></i>
                 </div>
-                <a href="clientes.php" class="card-category text-success font-weight-bold">
+                <a href="clientes" class="card-category text-success font-weight-bold">
                     Clientes
                 </a>
                 <h3 class="card-title"><?php echo $total['clientes']; ?></h3>
@@ -50,7 +50,7 @@ include_once "includes/header.php";
                 <div class="card-icon">
                     <i class="fab fa-product-hunt fa-2x"></i>
                 </div>
-                <a href="productos.php" class="card-category text-danger font-weight-bold">
+                <a href="productos" class="card-category text-danger font-weight-bold">
                     Productos
                 </a>
                 <h3 class="card-title"><?php echo $total['productos']; ?></h3>
@@ -65,7 +65,7 @@ include_once "includes/header.php";
                 <div class="card-icon">
                     <i class="fas fa-cash-register fa-2x"></i>
                 </div>
-                <a href="ventas.php" class="card-category text-info font-weight-bold">
+                <a href="ventas" class="card-category text-info font-weight-bold">
                     Ventas
                 </a>
                 <h3 class="card-title"><?php echo $total['ventas']; ?></h3>

@@ -102,7 +102,7 @@ include_once "includes/header.php";
                                 <input type="text" placeholder="Ingrese precio de venta" class="form-control" name="preciov" id="preciov">
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label for="cantidad" class=" text-dark font-weight-bold">Cantidad</label>
                                 <input type="number" placeholder="Ingrese cantidad" class="form-control" name="cantidad" id="cantidad">
@@ -111,10 +111,10 @@ include_once "includes/header.php";
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="fecha" class=" text-dark font-weight-bold">Fecha de compra</label>
-                                <input type="date" placeholder="Ingrese fecha de compra" class="form-control" name="fecha" id="fecha">
+                                <input type="date" class="form-control" name="fecha" id="fecha"  value="<?php echo date("Y-m-d");?>">
                             </div>
                         </div>
-                        <div class="col-md-3 d-flex align-items-md-center">
+                        <div class="col-md-4 d-flex align-items-md-center justify-content-md-center">
                             <input type="submit" value="Registrar" class="btn btn-primary" id="btnAccion">
                             <input type="button" value="Nuevo" onclick="limpiar()" class="btn btn-success" id="btnNuevo">
                         </div>
@@ -149,19 +149,22 @@ include_once "includes/header.php";
                         while ($data = mysqli_fetch_assoc($query)) {
                             $preciocom = $data['precioCompra'];
                             $precioven = $data['precioVenta'];
+                            $fecha = $data['fecha'];
+                            $fecha_timestamp = strtotime($fecha);
+                            $nueva_fecha = date("d-m-Y", $fecha_timestamp);
                     ?>
-                            <tr>
+                            <tr class="text-center">
                                 <td><?php echo $data['codigo']; ?></td>
                                 <td><?php echo $data['descripcion']; ?></td>
                                 <td><?php echo $data['precioCompra']; ?></td>
                                 <td><?php echo $data['precioVenta']; ?></td>
                                 <td><?php echo $data['stock']; ?></td>
-                                <td><?php echo $data['fecha']; ?></td>
+                                <td><?php echo $nueva_fecha; ?></td>
                                 <td><?php echo number_format($precioven - $preciocom, 2) ?></td>
                                 <td>
-                                    <a href="#" onclick="editarProducto(<?php echo $data['codproducto']; ?>)" class="btn btn-primary"><i class='fas fa-edit'></i></a>
-                                    <form action="eliminar_producto.php?id=<?php echo $data['codproducto']; ?>" method="post" class="confirmar d-inline">
-                                        <button class="btn btn-danger" type="submit"><i class='fas fa-trash-alt'></i> </button>
+                                    <a href="#" onclick="editarProducto(<?php echo $data['codigo']; ?>)" class="btn btn-primary btn-sm"><i class='fas fa-edit'></i></a>
+                                    <form action="eliminar_producto.php?id=<?php echo $data['codigo']; ?>" method="post" class="confirmar d-inline">
+                                        <button class="btn btn-danger btn-sm" type="submit"><i class='fas fa-trash-alt'></i> </button>
                                     </form>
                                 </td>
                             </tr>

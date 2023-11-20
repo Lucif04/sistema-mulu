@@ -387,7 +387,7 @@ if (document.getElementById("ProductosVendidos")) {
                 var cantidad = [];
                 for (var i = 0; i < data.length; i++) {
                     nombre.push(data[i]['descripcion']);
-                    cantidad.push(data[i]['cantidad']);
+                    cantidad.push(data[i]['total']);
                 }
                 var ctx = document.getElementById("ProductosVendidos");
                 var myPieChart = new Chart(ctx, {
@@ -479,7 +479,7 @@ function editarCliente(id) {
             $('#nombre').val(datos.nombre);
             $('#telefono').val(datos.telefono);
             $('#direccion').val(datos.direccion);
-            $('#id').val(datos.idcliente);
+            $('#id').val(datos.id_cliente);
             $('#provincia').val(datos.provincia);
             $('#localidad').val(datos.localidad);
             $('#cp').val(datos.cp);
@@ -535,7 +535,7 @@ function editarProducto(id) {
             $('#preciov').val(datos.precioVenta);
             $('#cantidad').val(datos.stock);
             $('#fecha').val(datos.fecha);
-            $('#id').val(datos.codproducto);
+            $('#id').val(datos.codProducto);
             $('#btnAccion').val('Modificar');
         },
         error: function (error) {
@@ -557,11 +557,11 @@ function editarPedido(id) {
         },
         success: function (response) {
             const datos = JSON.parse(response);
+            $('#id').val(datos.id_pedido);
             $('#nombre').val(datos.nombre);
             $('#telefono').val(datos.telefono);
             $('#pedido').val(datos.pedido);
             $('#fecha').val(datos.fecha);
-            $('#id').val(datos.idPedido);
             $('#btnAccion').val('Modificar');
         },
         error: function (error) {
